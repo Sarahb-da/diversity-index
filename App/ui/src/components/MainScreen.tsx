@@ -18,14 +18,7 @@ const MainScreen: React.FC<Props> = ({onLogout}) => {
     <>
       <Menu icon borderless>
         <Menu.Item>
-          <Image
-            as='a'
-            href='https://www.daml.com/'
-            target='_blank'
-            src='/daml.svg'
-            alt='DAML Logo'
-            size='mini'
-          />
+          Diversity Portal
         </Menu.Item>
         <Menu.Menu position='right' className='test-select-main-menu'>
           <Menu.Item position='right'>
@@ -36,6 +29,7 @@ const MainScreen: React.FC<Props> = ({onLogout}) => {
             active={false}
             className='test-select-log-out'
             onClick={onLogout}
+            label='Log out'
             icon='log out'
           />
         </Menu.Menu>

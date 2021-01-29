@@ -5,7 +5,7 @@ import React from 'react';
 import LoginScreen from './LoginScreen';
 import MainScreen from './MainScreen';
 import DamlLedger from '@daml/react';
-import Credentials from '../Credentials';
+import Credentials, { computeCredentials, storeCredentials, retrieveCredentials } from '../Credentials'
 import { httpBaseUrl } from '../config';
 
 /**
@@ -13,7 +13,12 @@ import { httpBaseUrl } from '../config';
  */
 // APP_BEGIN
 const App: React.FC = () => {
-  const [credentials, setCredentials] = React.useState<Credentials | undefined>();
+  const [credentials, setCredentials] = React.useState<Credentials | undefined>(retrieveCredentials());
+
+  const handleCredentials = (credentials?: Credentials) => {
+    setCredentials(credentials);
+    storeCredentials(credentials);
+  }
 
   return credentials
     ? <DamlLedger
@@ -23,7 +28,7 @@ const App: React.FC = () => {
       >
         <MainScreen onLogout={() => setCredentials(undefined)}/>
       </DamlLedger>
-    : <LoginScreen onLogin={setCredentials} />
+    : <LoginScreen onLogin={handleCredentials} />
 }
 // APP_END
 
