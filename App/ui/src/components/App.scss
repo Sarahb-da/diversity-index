@@ -4,7 +4,8 @@
 @import './TopMenu.scss';
 @import './Home.scss';
 @import './Profile.scss';
-
+@import './Following.scss';
+@import './Survey.scss';
 @import './LoginScreen.scss';
 
 @mixin app {
@@ -18,5 +19,7 @@
         @include top-menu;
         @include home;
         @include profile;
+        @include following;
+        @include survey;
     }
 }

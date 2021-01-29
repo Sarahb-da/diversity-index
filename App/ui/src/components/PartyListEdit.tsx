@@ -4,16 +4,19 @@
 import React from 'react'
 import { Form, List, Button } from 'semantic-ui-react';
 import { Party } from '@daml/types';
+import { User } from '@daml.js/app';
+
 
 type Props = {
   parties: Party[];
+  users: User.User[];
   onAddParty: (party: Party) => Promise<boolean>;
 }
 
 /**
  * React component to edit a list of `Party`s.
  */
-const PartyListEdit: React.FC<Props> = ({parties, onAddParty}) => {
+const PartyListEdit: React.FC<Props> = ({parties, onAddParty, users}) => {
   const [newParty, setNewParty] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
@@ -45,20 +48,22 @@ const PartyListEdit: React.FC<Props> = ({parties, onAddParty}) => {
       )}
       <br />
       <Form onSubmit={addParty}>
-        <Form.Input
-          fluid
-          readOnly={isSubmitting}
-          loading={isSubmitting}
-          className='test-select-follow-input'
-          placeholder="Username to follow"
-          value={newParty}
-          onChange={(event) => setNewParty(event.currentTarget.value)}
-        />
-        <Button
-          type='submit'
-          className='test-select-follow-button'>
-          Follow
-        </Button>
+        <Form.Group>
+          <Form.Input
+            fluid
+            readOnly={isSubmitting}
+            loading={isSubmitting}
+            className='test-select-follow-input'
+            placeholder="Username to follow"
+            value={newParty}
+            onChange={(event) => setNewParty(event.currentTarget.value)}
+          />
+          <Button
+            type='submit'
+            className='primary'>
+            Add Follower
+          </Button>
+        </Form.Group>
       </Form>
     </List>
   );

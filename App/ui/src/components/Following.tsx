@@ -35,29 +35,30 @@ const Following = () => {
 
     return (
         <div className='following'>
+            <Header>
+                <p>Track your followers and follow others to view their rating.</p>
+            </Header>
             <Segment>
-                <Header as='h3'>
-                    Users I'm following
-                </Header>
-                <Divider />
-                <PartyListEdit
-                    parties={myUser?.following ?? []}
-                    onAddParty={follow}
-                    />
-            </Segment>
-            <Segment>
-                <Header as='h2'>
-                    <Icon name='globe' />
-                    <Header.Content>
-                        The Network
-                        <Header.Subheader>My followers and users they are following</Header.Subheader>
-                    </Header.Content>
-                </Header>
-                <Divider />
-                <UserList
-                    users={followers}
-                    onFollow={follow}
-                    />
+                <div className='followers'>
+                    <Header as='h3'>
+                        Followers: {followers.length}
+                    </Header>
+                    <UserList
+                        users={followers}
+                        following={myUser?.following ?? []}
+                        onFollow={follow}
+                        />
+                </div>
+                <div className='following'>
+                    <Header as='h3'>
+                        Following: {myUser?.following.length || 0}
+                    </Header>
+                    <PartyListEdit
+                        users={followers}
+                        parties={myUser?.following ?? []}
+                        onAddParty={follow}
+                        />
+                </div>
             </Segment>
         </div>
     )

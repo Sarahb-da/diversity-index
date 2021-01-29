@@ -3,55 +3,16 @@ import { Segment, Header, Table, Tab } from 'semantic-ui-react';
 import { useParty } from '@daml/react';
 
 import { EditIcon } from '../common/Icons'
+import { metrics } from '../common/Questions';
+
 const Profile: React.FC = () => {
     const username = useParty();
 
-    const overAll =  [
-        'leadership encourages diversity? ex. CEO making a public commitment',
-        'leadership take action to deomonstrate importance of diversity?',
-        'culture allows people to be themselves?',
-        'company values individual differences?',
-        'leadership treats employees fairly?',
-        ' distributes employee engagement surveys?',
-        'anual diversity report, or willing to release one?'
-    ]
-
-    const hiring = [
-        'company takes action to seek diverse candidate pool?',
-        'job interviews are conducted by a diverse group of individuals?',
-        'outward-facing language that explicitly states a commitment to diversity?'
-    ]
-
-    const metrics = [
-        'percentage of women company level',
-        'percentage of women  leadership level',
-        'percentage of women  tech (or per department)',
-        'percentage of women board level'
-    ]
-
-    const training = [
-        'company provides educational programs that promote diversity and inclusion'
-    ]
-
-    const inclusion = [
-        'Gender bias slurs or jokes are not tolerated'
-    ]
-
-    const policies = [
-        'Policies and Procedures encourage diversity and inclusion',
-        'company is equipped to take action in response to discrimination or gender bias',
-        'employees are aware of how to report incidents of discrimination or gender bias/ there are multiple anonymous avenues to do so',
-        'gender policies?',
-        'anonymous D&I reporting?'
-    ]
-
-    const careerDevelopment = [
-        'all employees are encouraged to apply for higher positions',
-        'gender does not effect internal promotion process'
-    ]
-
     return (
       <div className='profile'>
+        <Header>
+            <p>Company identifying information.</p>
+        </Header>
         <Segment>
             <Header as='h4'>
                 Company Name: <b>{username}</b>
@@ -62,7 +23,7 @@ const Profile: React.FC = () => {
             <Header as='h4'>
                 Size:
             </Header>
-                <Table className='metrics-table' striped>
+                {/* <Table className='metrics-table' striped>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>
@@ -94,7 +55,7 @@ const Profile: React.FC = () => {
                             </Table.Row>
                         )}
                     </Table.Body>
-                </Table>
+                </Table> */}
         </Segment>
       </div>
     );

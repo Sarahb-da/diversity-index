@@ -18,7 +18,9 @@ type Props = {
 const MainScreen: React.FC<Props> = ({ onLogout, children }) => {
   const menuItems = [
     {name: 'Profile', url: '/profile'},
-    {name: 'Following', url: '/following'},
+    {name: 'Network', url: '/network'},
+    {name: 'Survey', url: '/survey'},
+
   ]
 
   const [ activeItem, setActiveItem ] = useState<IMenuItem>(menuItems[0])
