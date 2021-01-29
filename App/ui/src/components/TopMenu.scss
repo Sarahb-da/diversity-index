@@ -1,0 +1,17 @@
+@mixin top-menu {
+    .top-menu {
+        margin: 0 $spacing-xl;
+
+        h2 {
+            color: darkblue;
+        }
+
+        .item {
+            padding: $spacing-s;
+        }
+
+        .item.username {
+            background-color: white;
+        }
+    }
+}

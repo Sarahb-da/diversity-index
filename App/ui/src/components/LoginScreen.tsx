@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useCallback } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 import Credentials, { computeCredentials } from '../Credentials';
@@ -19,7 +19,7 @@ type Props = {
  * React component for the login screen of the `App`.
  */
 const LoginScreen: React.FC<Props> = ({onLogin}) => {
-  const [username, setUsername] = React.useState('');
+  const [ username, setUsername ] = React.useState('');
   const history = useHistory();
 
   const login = useCallback(async (credentials: Credentials) => {
@@ -40,7 +40,7 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
     event.preventDefault();
     const credentials = computeCredentials(username);
     await login(credentials);
-    history.push(`/${username}`);
+    history.push(`/${username}/profile`);
   }
 
   const handleDablLogin = () => {
@@ -63,55 +63,61 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
   }, [login]);
 
   return (
-    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h1' textAlign='center' size='huge' style={{color: '#223668'}}>
-          <Header.Content>
-            Create
-            <Image
-              as='a'
-              href='https://www.daml.com/'
-              target='_blank'
-              src='/daml.svg'
-              alt='Daml Logo'
-              spaced
-              size='small'
-              verticalAlign='middle'
-            />
-            App
-          </Header.Content>
-        </Header>
-        <Form size='large' className='test-select-login-screen'>
-          <Segment>
-            {deploymentMode !== DeploymentMode.PROD_DABL
-            ? <>
-                {/* FORM_BEGIN */}
-                <Form.Input
-                  fluid
-                  icon='user'
-                  iconPosition='left'
-                  placeholder='Username'
-                  value={username}
-                  className='test-select-username-field'
-                  onChange={e => setUsername(e.currentTarget.value)}
-                />
-                <Button
-                  primary
-                  fluid
-                  className='test-select-login-button'
-                  onClick={handleLogin}>
-                  Log in
+    <div className='login-screen'>
+      <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h1' textAlign='center' size='huge' style={{color: '#223668'}}>
+            <Header.Content>
+              Diversity Portal
+            </Header.Content>
+          </Header>
+          <Header textAlign='center' size='huge' style={{color: '#223668'}}>
+            <Header.Content as='h3'>
+              An app powered by
+              <Image
+                as='a'
+                href='https://www.daml.com/'
+                target='_blank'
+                src='/daml.svg'
+                alt='Daml Logo'
+                spaced
+                size='mini'
+              />
+            </Header.Content>
+          </Header>
+          <Form size='large' className='test-select-login-screen'>
+            <Segment>
+              {deploymentMode !== DeploymentMode.PROD_DABL
+              ? <>
+                  {/* FORM_BEGIN */}
+                  <Form.Input
+                    fluid
+                    icon='user'
+                    iconPosition='left'
+                    placeholder='Username'
+                    value={username}
+                    className='test-select-username-field'
+                    onChange={e => setUsername(e.currentTarget.value)}
+                  />
+                  <Button
+                    primary
+                    fluid
+                    className='primary'
+                    onClick={handleLogin}>
+                    Log in
+                  </Button>
+                  {/* FORM_END */}
+                </>
+              : <Button primary fluid onClick={handleDablLogin}>
+                  Log in with DABL
                 </Button>
-                {/* FORM_END */}
-              </>
-            : <Button primary fluid onClick={handleDablLogin}>
-                Log in with DABL
-              </Button>
-            }
-          </Segment>
-        </Form>
-      </Grid.Column>
-    </Grid>
+              }
+            </Segment>
+          </Form>
+        </Grid.Column>
+      </Grid>
+    </div>
+
   );
 };
 
