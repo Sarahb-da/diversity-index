@@ -63,30 +63,33 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h1' textAlign='center' size='huge' style={{color: '#223668'}}>
           <Header.Content>
-            Create
-            <Image
-              as='a'
-              href='https://www.daml.com/'
-              target='_blank'
-              src='/daml.svg'
-              alt='Daml Logo'
-              spaced
-              size='small'
-              verticalAlign='middle'
-            />
-            App
+            Diversity Portal
           </Header.Content>
         </Header>
-        <Form size='large' className='test-select-login-screen'>
+        <Header as='h3' textAlign='center'>
+          <Header.Content>
+              An app powered by
+              <Image
+                as='a'
+                href='https://www.daml.com/'
+                target='_blank'
+                src='/daml.svg'
+                alt='Daml Logo'
+                spaced
+                size='mini'
+              />
+          </Header.Content>
+        </Header>
+          <Form size='large' className='test-select-login-screen'>
           <Segment>
             {deploymentMode !== DeploymentMode.PROD_DABL
             ? <>
                 {/* FORM_BEGIN */}
                 <Form.Input
                   fluid
-                  icon='user'
+                  icon='globe'
                   iconPosition='left'
-                  placeholder='Username'
+                  placeholder='Company Name'
                   value={username}
                   className='test-select-username-field'
                   onChange={e => setUsername(e.currentTarget.value)}

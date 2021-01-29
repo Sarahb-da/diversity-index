@@ -1,10 +1,12 @@
-// Copyright (c) 2021 Digital Asset (Switzerland) GmbH and/or its affiliates. All rights reserved.
+// Copyright (c) 2020 Digital Asset (Switzerland) GmbH and/or its affiliates. All rights reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import { encode } from 'jwt-simple';
-import { ledgerId } from './config';
+import { encode } from 'jwt-simple'
+// import { expiredToken } from '@daml/react'
 
-export const APPLICATION_ID: string = 'app';
+import { ledgerId } from './config'
+
+export const APPLICATION_ID: string = 'da-marketplace';
 
 // NOTE: This is for testing purposes only.
 // To handle authentication properly,
@@ -15,6 +17,66 @@ export type Credentials = {
   party: string;
   token: string;
   ledgerId: string;
+}
+
+function isCredentials(credentials: any): credentials is Credentials {
+  return typeof credentials.party === 'string' &&
+         typeof credentials.token === 'string' &&
+         typeof credentials.ledgerId === 'string'
+}
+
+const CREDENTIALS_STORAGE_KEY = 'credentials';
+
+export function storeCredentials(credentials?: Credentials): void {
+  localStorage.setItem(CREDENTIALS_STORAGE_KEY, JSON.stringify(credentials));
+}
+
+export function retrieveCredentials(): Credentials | undefined {
+  const credentialsJson = localStorage.getItem(CREDENTIALS_STORAGE_KEY);
+
+  if (!credentialsJson) {
+    return undefined;
+  }
+
+  try {
+    const credentials = JSON.parse(credentialsJson);
+    if (isCredentials(credentials) && !expiredToken(credentials.token)) {
+      return credentials;
+    }
+  } catch {
+    console.error("Could not parse credentials: ", credentialsJson);
+  }
+
+  return undefined;
+}
+
+function expiredToken(token: string) {
+  var expInUnixEpoch = fieldFromDablJWT(token, "exp");
+  if (expInUnixEpoch === null) {
+      return true;
+  }
+  else {
+      var asSeconds = parseInt(expInUnixEpoch, 10);
+      if (asSeconds === undefined) {
+          return true;
+      }
+      else {
+          return asSeconds <= (new Date()).getTime() / 1000;
+      }
+  }
+}
+
+var jsonwebtoken_1 = require("jsonwebtoken");
+
+function fieldFromDablJWT(token: string, fieldName: string) {
+  var decoded = jsonwebtoken_1.decode(token);
+  if (!decoded || typeof (decoded) === "string") {
+      console.warn("JWT not in projectDABL format: " + token);
+      return null;
+  }
+  else {
+      return decoded[fieldName];
+  }
 }
 
 function computeToken(party: string): string {
