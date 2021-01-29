@@ -6,7 +6,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom'
 
 import Following from './Following';
 import Profile from './Profile';
-
+import Survey from './Survey';
 
 // USERS_BEGIN
 const MainView: React.FC = () => {
@@ -18,8 +18,11 @@ const MainView: React.FC = () => {
         <Route path={`${url}/profile`}>
           <Profile/>
         </Route>
-        <Route path={`${url}/following`}>
+        <Route path={`${url}/network`}>
           <Following/>
+        </Route>
+        <Route path={`${url}/survey`}>
+          <Survey/>
         </Route>
       </Switch>
     </div>

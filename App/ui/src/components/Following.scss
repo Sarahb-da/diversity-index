@@ -1,5 +1,18 @@
 @mixin following {
     .following {
-        
+        margin: 0 $spacing-xl;
+
+        .segment {
+            display: flex;
+            flex-direction: row;
+
+            .following, .followers {
+                width: 50%;
+
+                .input {
+                    width: 250px;
+                }
+            }
+        };
     }
 }

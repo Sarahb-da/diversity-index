@@ -1,0 +1,24 @@
+@mixin survey {
+    .survey {
+        margin: 0 $spacing-xl;
+
+        .survey-body {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+        }
+
+        .menu {
+            height: 100%;
+        }
+
+        .segment {
+            margin: 0 $spacing-s;
+            width: 100%;
+        }
+
+        button {
+            margin-top: $spacing-s;
+        }
+    }
+}

@@ -5,9 +5,12 @@ import React from 'react'
 import { Icon, List } from 'semantic-ui-react'
 import { Party } from '@daml/types';
 import { User } from '@daml.js/app';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 type Props = {
   users: User.User[];
+  following: string[];
   onFollow: (userToFollow: Party) => void;
 }
 
@@ -15,7 +18,15 @@ type Props = {
  * React component to display a list of `User`s.
  * Every party in the list can be added as a friend.
  */
-const UserList: React.FC<Props> = ({users, onFollow}) => {
+const UserList: React.FC<Props> = ({users, onFollow, following}) => {
+  console.log(following.includes('Tyler'));
+  const [ usersToFollow, setUsersToFollow ] = useState<string[]>([])
+
+  useEffect(() => {
+    console.log('here')
+    setUsersToFollow(users.filter(u => !following.includes(u.username)).map(u => u.username) || [])
+  }, [following])
+
   return (
     <List divided relaxed>
       {[...users].sort((x, y) => x.username.localeCompare(y.username)).map(user =>
@@ -24,7 +35,7 @@ const UserList: React.FC<Props> = ({users, onFollow}) => {
           <List.Content>
             <List.Content floated='right'>
               <Icon
-                name='add user'
+                name='add'
                 link
                 className='test-select-add-user-icon'
                 onClick={() => onFollow(user.username)} />
@@ -36,7 +47,7 @@ const UserList: React.FC<Props> = ({users, onFollow}) => {
               <List.Item key={userToFollow}>
                 <List.Content floated='right'>
                   <Icon
-                    name='add user'
+                    name='add'
                     link
                     className='test-select-add-user-following-icon'
                     onClick={() => onFollow(userToFollow)} />

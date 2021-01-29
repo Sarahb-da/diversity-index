@@ -71,6 +71,13 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
               Diversity Portal
             </Header.Content>
           </Header>
+          <Header as='h3' textAlign='center'>
+            <Header.Content>
+                The Diversity Index Portal is a platform for companies to calculating and share
+                self-reported diversity metrics.
+            </Header.Content>
+          </Header>
+
           <Header textAlign='center' size='huge' style={{color: '#223668'}}>
             <Header.Content as='h3'>
               An app powered by
