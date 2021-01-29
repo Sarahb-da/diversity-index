@@ -1,0 +1,3 @@
+[submodule "app/app/ui/src/dabl-react"]
+	path = app/app/ui/src/dabl-react
+	url = https://github.com/digital-asset/dabl-react
