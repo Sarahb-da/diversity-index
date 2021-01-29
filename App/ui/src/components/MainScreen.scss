@@ -1,0 +1,33 @@
+@mixin main-screen {
+    .main-screen {
+        width: 100vw;
+
+        .site-header {
+
+            .title {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: $spacing-m $spacing-xl;
+            }
+
+            .logout-menu {
+                .log-out-button {
+                    background-color: lightyellow;
+                }
+            }
+        }
+
+        .top-menu {
+            min-height: 62px;
+        }
+
+        .page-body {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            flex: 1;
+            padding: 0;
+        }
+    }
+}

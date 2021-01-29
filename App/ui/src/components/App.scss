@@ -1,0 +1,22 @@
+@import './MainView.scss';
+@import './MainScreen.scss';
+
+@import './TopMenu.scss';
+@import './Home.scss';
+@import './Profile.scss';
+
+@import './LoginScreen.scss';
+
+@mixin app {
+    .app {
+        height: 100vh;
+        width: 100vw;
+
+        @include login-screen;
+        @include main-view;
+        @include main-screen;
+        @include top-menu;
+        @include home;
+        @include profile;
+    }
+}
