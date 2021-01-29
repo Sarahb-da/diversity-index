@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React, { useCallback } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
+
 import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 import Credentials, { computeCredentials } from '../Credentials';
 import Ledger from '@daml/ledger';
@@ -18,6 +20,7 @@ type Props = {
  */
 const LoginScreen: React.FC<Props> = ({onLogin}) => {
   const [username, setUsername] = React.useState('');
+  const history = useHistory();
 
   const login = useCallback(async (credentials: Credentials) => {
     try {
@@ -37,6 +40,7 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
     event.preventDefault();
     const credentials = computeCredentials(username);
     await login(credentials);
+    history.push(`/${username}`);
   }
 
   const handleDablLogin = () => {
