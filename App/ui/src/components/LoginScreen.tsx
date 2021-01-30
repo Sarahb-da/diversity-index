@@ -15,9 +15,6 @@ type Props = {
   onLogin: (credentials: Credentials) => void;
 }
 
-/**
- * React component for the login screen of the `App`.
- */
 const LoginScreen: React.FC<Props> = ({onLogin}) => {
   const [ username, setUsername ] = React.useState('');
   const history = useHistory();
@@ -71,13 +68,10 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
               Diversity Portal
             </Header.Content>
           </Header>
-          <Header as='h3' textAlign='center'>
-            <Header.Content>
+            <p>
                 The Diversity Index Portal is a platform for companies to calculating and share
                 self-reported diversity metrics.
-            </Header.Content>
-          </Header>
-
+            </p>
           <Header textAlign='center' size='huge' style={{color: '#223668'}}>
             <Header.Content as='h3'>
               An app powered by
@@ -94,9 +88,8 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
           </Header>
           <Form size='large' className='test-select-login-screen'>
             <Segment>
-              {deploymentMode !== DeploymentMode.PROD_DABL
-              ? <>
-                  {/* FORM_BEGIN */}
+              {deploymentMode !== DeploymentMode.PROD_DABL ?
+                <>
                   <Form.Input
                     fluid
                     icon='user'
@@ -113,7 +106,6 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
                     onClick={handleLogin}>
                     Log in
                   </Button>
-                  {/* FORM_END */}
                 </>
               : <Button primary fluid onClick={handleDablLogin}>
                   Log in with DABL
@@ -124,7 +116,6 @@ const LoginScreen: React.FC<Props> = ({onLogin}) => {
         </Grid.Column>
       </Grid>
     </div>
-
   );
 };
 

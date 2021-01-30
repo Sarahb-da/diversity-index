@@ -12,15 +12,12 @@ type Props = {
   onLogout: () => void;
 }
 
-/**
- * React component for the main screen of the `App`.
- */
 const MainScreen: React.FC<Props> = ({ onLogout, children }) => {
   const menuItems = [
     {name: 'Profile', url: '/profile'},
     {name: 'Network', url: '/network'},
     {name: 'Survey', url: '/survey'},
-
+    {name: 'Analyze', url: '/analyze'},
   ]
 
   const [ activeItem, setActiveItem ] = useState<IMenuItem>(menuItems[0])
@@ -29,17 +26,17 @@ const MainScreen: React.FC<Props> = ({ onLogout, children }) => {
     <div className='main-screen'>
       <Menu icon borderless className='site-header'>
         <Menu.Item className='title'>
-          <Header as='h2'>
+          <Header as='h1'>
               Diversity Portal
           </Header>
-          <p>
+          <Header as='h2'>
             The Diversity Index Portal is a platform for companies to calculating and share
             self-reported diversity metrics.
-          </p>
+          </Header>
         </Menu.Item>
         <Menu.Menu position='right' className='logout-menu'>
           <Menu.Item position='right'>
-          <Header as='h3'>
+          <Header as='h4'>
             You are logged in as {useParty()}.
           </Header>
           </Menu.Item>
@@ -49,7 +46,7 @@ const MainScreen: React.FC<Props> = ({ onLogout, children }) => {
             className='primary'
             onClick={onLogout}
             icon='log out'
-          >
+            >
               Log out
           </Menu.Item>
         </Menu.Menu>

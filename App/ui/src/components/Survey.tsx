@@ -9,6 +9,9 @@ const Survey = () => {
     const [selectedQuestions, setSelectedQuestions]  = useState('overall')
     return (
         <div className='survey'>
+            <Header as='h2'>
+                Survey
+            </Header>
             <Header>
                 <p>Calculate your companies diversity index and share it with your followers.</p>
             </Header>
@@ -105,7 +108,6 @@ const Survey = () => {
                     </Button>
                 </Segment>
             </div>
-
         </div>
 
     )

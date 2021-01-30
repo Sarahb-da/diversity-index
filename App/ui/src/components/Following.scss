@@ -1,16 +1,17 @@
 @mixin following {
     .following {
         margin: 0 $spacing-xl;
+        width: 100%;
 
         .segment {
             display: flex;
             flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
 
             .following, .followers {
-                width: 50%;
 
                 .input {
-                    width: 250px;
                 }
             }
         };

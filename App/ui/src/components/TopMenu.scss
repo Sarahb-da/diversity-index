@@ -1,10 +1,6 @@
 @mixin top-menu {
     .top-menu {
-        margin: 0 $spacing-xl;
-
-        h2 {
-            color: darkblue;
-        }
+        margin: $spacing-s $spacing-l;
 
         .item {
             padding: $spacing-s;

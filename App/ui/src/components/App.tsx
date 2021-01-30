@@ -14,10 +14,6 @@ import { httpBaseUrl } from '../config'
 import LoginScreen from './LoginScreen'
 import MainScreen from './MainScreen'
 
-/**
- * React component for the entry point into the application.
- */
-// APP_BEGIN
 const App: React.FC = () => {
   const [credentials, setCredentials] = React.useState<Credentials | undefined>(retrieveCredentials());
 
@@ -50,9 +46,7 @@ const App: React.FC = () => {
         </Switch>
       </Router>
     </div>
-
   )
 }
-// APP_END
 
 export default App;
