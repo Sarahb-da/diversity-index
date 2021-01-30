@@ -1,9 +1,10 @@
 @mixin profile {
     .profile {
         margin: 0 $spacing-xl;
+        width: 100%;
 
-        h2 {
-            font-weight: normal;
+        .segment {
+            width: 100%;
         }
 
         table.metrics-table {

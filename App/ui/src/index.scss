@@ -32,14 +32,12 @@ html {
       height: 100vh;
       display: flex;
       flex-direction: column;
-      background-color: aliceblue;
 
       @include app;
     }
   }
 
   .ui.button.primary {
-    background-color: lightyellow;
     border: 1px solid darkblue;
     color: darkblue;
 
@@ -48,6 +46,11 @@ html {
       color: darkblue;
     }
   }
+
+  h2.ui.header {
+    font-weight: normal;
+  }
+
 }
 
 code {

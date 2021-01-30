@@ -10,6 +10,9 @@ const Profile: React.FC = () => {
 
     return (
       <div className='profile'>
+        <Header as='h2'>
+            Profile
+        </Header>
         <Header>
             <p>Company identifying information.</p>
         </Header>
@@ -23,7 +26,7 @@ const Profile: React.FC = () => {
             <Header as='h4'>
                 Size:
             </Header>
-                {/* <Table className='metrics-table' striped>
+                <Table className='metrics-table' striped>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>
@@ -55,7 +58,7 @@ const Profile: React.FC = () => {
                             </Table.Row>
                         )}
                     </Table.Body>
-                </Table> */}
+                </Table>
         </Segment>
       </div>
     );

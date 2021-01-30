@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
-import { Switch, Route, useRouteMatch } from 'react-router-dom'
 
-import { Header, Icon, Segment, Divider } from 'semantic-ui-react';
+import { Header, Segment } from 'semantic-ui-react';
 import { Party } from '@daml/types';
 import { User } from '@daml.js/app';
 import { useParty, useLedger, useStreamFetchByKeys, useStreamQueries } from '@daml/react';
@@ -24,7 +23,7 @@ const Following = () => {
           alert(`Unknown error:\n${error}`);
           return false;
         }
-      }
+    }
 
     const followers = useMemo(() =>
         allUsers
@@ -35,8 +34,13 @@ const Following = () => {
 
     return (
         <div className='following'>
+            <Header as='h2'>
+                Network
+            </Header>
             <Header>
-                <p>Track your followers and follow others to view their rating.</p>
+                <p>
+                    Track your followers and follow others to view their rating.
+                </p>
             </Header>
             <Segment>
                 <div className='followers'>
@@ -46,8 +50,7 @@ const Following = () => {
                     <UserList
                         users={followers}
                         following={myUser?.following ?? []}
-                        onFollow={follow}
-                        />
+                        onFollow={follow}/>
                 </div>
                 <div className='following'>
                     <Header as='h3'>
@@ -56,8 +59,7 @@ const Following = () => {
                     <PartyListEdit
                         users={followers}
                         parties={myUser?.following ?? []}
-                        onAddParty={follow}
-                        />
+                        onAddParty={follow}/>
                 </div>
             </Segment>
         </div>

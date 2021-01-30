@@ -3,12 +3,15 @@
         width: 100vw;
 
         .site-header {
-
             .title {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 padding: $spacing-m $spacing-xl;
+
+                h2 {
+                    margin-top: 0px;
+                }
             }
 
             .logout-menu {
@@ -24,7 +27,7 @@
 
         .page-body {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             width: 100%;
             flex: 1;
             padding: 0;

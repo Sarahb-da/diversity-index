@@ -22,14 +22,13 @@ const TopMenu: React.FC<IProps> = ({
     items,
 }) => {
     const { url } = useRouteMatch();
-    const username = useParty();
 
     function handleItemClick(item: IMenuItem) {
         setActiveItem(item)
     }
 
     return (
-      <Menu className='top-menu' secondary pointing>
+      <Menu vertical className='top-menu' secondary>
           {items.map((item)=>
             <Menu.Item
                 className='item'
@@ -39,7 +38,7 @@ const TopMenu: React.FC<IProps> = ({
                 active={activeItem === item}
                 onClick={() => handleItemClick(item)}
             >
-                <Header as='h2'>
+                <Header as='h3'>
                     {item.name}
                 </Header>
             </Menu.Item>

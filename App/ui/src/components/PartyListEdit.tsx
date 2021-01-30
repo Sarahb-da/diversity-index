@@ -13,9 +13,6 @@ type Props = {
   onAddParty: (party: Party) => Promise<boolean>;
 }
 
-/**
- * React component to edit a list of `Party`s.
- */
 const PartyListEdit: React.FC<Props> = ({parties, onAddParty, users}) => {
   const [newParty, setNewParty] = React.useState('');
   const [isSubmitting, setIsSubmitting] = React.useState(false);
